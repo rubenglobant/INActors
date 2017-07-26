@@ -7,10 +7,12 @@
 //
 
 import UIKit
-import Alamofire
+import Alamofire     // library used to handle api conexions
 
+// class defined in order to handle api requests
 class RequestTMDB: NSObject {
     
+    // url elements definition
     let urlBase = "https://api.themoviedb.org/3/search/"
     let urlSearch = "person?"
     let urlApiKey = "api_key=10d719f86784720b0f0731227ed04cff"
@@ -18,14 +20,14 @@ class RequestTMDB: NSObject {
     var urlQuery = "&query="
     let urlAdult = "&include_adult=false"
     
-    
-    
     func people(inTableViewActors: UITableView, search actorName: String){
         
+        // url formatted
         let searchTextFormatted = actorName.replacingOccurrences(of: " ", with: "%20")
         urlQuery = urlQuery + searchTextFormatted
         let url = URL(string: urlBase+urlSearch+urlApiKey+urlLanguage+urlQuery+urlAdult)
-
+        
+        // url request
         Alamofire.request(url!).responseJSON { response in
             if let json = response.result.value as? NSDictionary {
                 actorsInfo = json["results"] as? [NSDictionary]

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// class defined to declare the cell elements
 class ActorsCellViewController: UITableViewCell {
 
     @IBOutlet weak var actorsName: UILabel!
@@ -15,13 +16,11 @@ class ActorsCellViewController: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

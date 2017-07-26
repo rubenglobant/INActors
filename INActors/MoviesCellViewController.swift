@@ -8,24 +8,20 @@
 
 import UIKit
 
+// class defined to declare the cell elements
 class MoviesCellViewController: UITableViewCell {
 
     @IBOutlet weak var cellMoviesImage: UIImageView!
     @IBOutlet weak var cellMoviesTitle: UILabel!
     @IBOutlet weak var cellMoviesRelease: UILabel!
     
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

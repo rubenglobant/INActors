@@ -8,25 +8,28 @@
 
 import UIKit
 
+// class defined in order to show the actor movies
 class ActorsDescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var actorDescriptionImage: UIImageView!
     @IBOutlet weak var actorDescriptionName: UILabel!
     @IBOutlet weak var moviewTableView: UITableView!
     
+    // variables defined to receive data from ActorsTableViewController
     var getName = String()
     var getImage = String()
     var getMovieTitle = [String?]()
     var getMovieRelease = [String?]()
     var getMoviePoster = [String?]()
 
-    
+    // struct that allows control the movies data
     struct movie {
         var movieTitle : String!
         var movieRelease : String!
         var moviePoster : String!
     }
     
+    // arrays defined to control and order the movie data structure
     var moviesArray = [movie]()
     var moviesArraySorted = [movie]()
     

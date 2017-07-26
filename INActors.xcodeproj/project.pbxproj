@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F1F3E259A0808D611F97F65 /* Pods_INActors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC6F062DC63E46A6D685B7E /* Pods_INActors.framework */; };
+		8B7FC1571F28D31F0065F79D /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FC1561F28D31F0065F79D /* AboutAppViewController.swift */; };
 		8B8804341F26496500DE88CD /* ActorsDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8804331F26496500DE88CD /* ActorsDescriptionViewController.swift */; };
 		8B8804361F28356200DE88CD /* MoviesCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8804351F28356200DE88CD /* MoviesCellViewController.swift */; };
 		8BCE6AEB1F2563D400759894 /* ActorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE6AEA1F2563D400759894 /* ActorsTableViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		7CC6F062DC63E46A6D685B7E /* Pods_INActors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INActors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7FC1561F28D31F0065F79D /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		8B8804331F26496500DE88CD /* ActorsDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsDescriptionViewController.swift; sourceTree = "<group>"; };
 		8B8804351F28356200DE88CD /* MoviesCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesCellViewController.swift; sourceTree = "<group>"; };
 		8BCE6AEA1F2563D400759894 /* ActorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsTableViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8B7FC1581F2934400065F79D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B8804331F26496500DE88CD /* ActorsDescriptionViewController.swift */,
+				8BCE6AEA1F2563D400759894 /* ActorsTableViewController.swift */,
+				8BD7B31A1F25612700D42555 /* Main.storyboard */,
+				8B7FC1561F28D31F0065F79D /* AboutAppViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8B7FC15A1F2934D80065F79D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE6AEC1F25643E00759894 /* ActorsCellViewController.swift */,
+				8B8804351F28356200DE88CD /* MoviesCellViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8B7FC15B1F2935230065F79D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BCE6AEE1F256F0C00759894 /* RequestTMDB.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8BD7B30A1F25612700D42555 = {
 			isa = PBXGroup;
 			children = (
@@ -78,12 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				8BD7B3161F25612700D42555 /* AppDelegate.swift */,
-				8BD7B31A1F25612700D42555 /* Main.storyboard */,
-				8B8804331F26496500DE88CD /* ActorsDescriptionViewController.swift */,
-				8BCE6AEA1F2563D400759894 /* ActorsTableViewController.swift */,
-				8BCE6AEE1F256F0C00759894 /* RequestTMDB.swift */,
-				8BCE6AEC1F25643E00759894 /* ActorsCellViewController.swift */,
-				8B8804351F28356200DE88CD /* MoviesCellViewController.swift */,
+				8B7FC15B1F2935230065F79D /* Model */,
+				8B7FC1581F2934400065F79D /* View */,
+				8B7FC15A1F2934D80065F79D /* Controller */,
 				8BD7B31D1F25612700D42555 /* Assets.xcassets */,
 				8BD7B31F1F25612700D42555 /* LaunchScreen.storyboard */,
 				8BD7B3221F25612700D42555 /* Info.plist */,
@@ -224,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7FC1571F28D31F0065F79D /* AboutAppViewController.swift in Sources */,
 				8BCE6AEF1F256F0C00759894 /* RequestTMDB.swift in Sources */,
 				8B8804341F26496500DE88CD /* ActorsDescriptionViewController.swift in Sources */,
 				8BCE6AED1F25643E00759894 /* ActorsCellViewController.swift in Sources */,
