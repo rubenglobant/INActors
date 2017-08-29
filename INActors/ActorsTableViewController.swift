@@ -10,14 +10,14 @@
 import UIKit
 import Kingfisher    // library used to handle api images
 
-var actorsInfo : [NSDictionary]?  // Array of dictionaries that save all data that come from the api
+var actorsInfo: [NSDictionary]?  // Array of dictionaries that save all data that come from the api
 
 // class defined in order to show the search results
 class ActorsTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var actorsSearchBar: UISearchBar!
-    var actor : NSDictionary?
-    var name : NSString?
+    var actor: NSDictionary?
+    var name: NSString?
     
     
     override func viewDidLoad() {
@@ -28,8 +28,7 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
     }
     
     // hide keyboard when searh ends
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
-    {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.actorsSearchBar.endEditing(true)
     }
     
