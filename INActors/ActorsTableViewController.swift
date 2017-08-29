@@ -28,8 +28,7 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
     }
     
     // hide keyboard when searh ends
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
-    {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.actorsSearchBar.endEditing(true)
     }
     
