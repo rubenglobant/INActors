@@ -15,9 +15,6 @@ class AboutAppViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         welcomeMessage.text = "Welcome, find here information about your favorite actors"
-        
     }
-
 }

@@ -8,7 +8,7 @@
 
 
 import UIKit
-import Kingfisher    // library used to handle api images
+import Kingfisher
 
 var actorsInfo: [NSDictionary]?  // Array of dictionaries that save all data that come from the api
 
@@ -19,12 +19,9 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
     var actor: NSDictionary?
     var name: NSString?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.actorsSearchBar.delegate = self
-        
     }
     
     // hide keyboard when searh ends
@@ -38,14 +35,11 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if actorsInfo != nil{
             return (actorsInfo?.count)!
-        }
-        else {
+        } else {
             return 0
         }
-        
     }
 
     
@@ -74,10 +68,8 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
     
     // make a conexion wiht the api and shows the results in the table
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
             let requestActors: RequestTMDB = RequestTMDB()
             requestActors.people(inTableViewActors: tableView, search: searchText)
-        
     }
     
     // handle the behabior of the selected row
@@ -132,5 +124,4 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         self.navigationController?.pushViewController(description, animated: true)
 
     }
-
 }
