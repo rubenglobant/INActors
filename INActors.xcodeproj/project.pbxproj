@@ -61,10 +61,7 @@
 		8B7FC1581F2934400065F79D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8B8804331F26496500DE88CD /* ActorsDescriptionViewController.swift */,
-				8BCE6AEA1F2563D400759894 /* ActorsTableViewController.swift */,
 				8BD7B31A1F25612700D42555 /* Main.storyboard */,
-				8B7FC1561F28D31F0065F79D /* AboutAppViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -72,6 +69,8 @@
 		8B7FC15A1F2934D80065F79D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8BCE6AEA1F2563D400759894 /* ActorsTableViewController.swift */,
+				8B8804331F26496500DE88CD /* ActorsDescriptionViewController.swift */,
 				8BCE6AEC1F25643E00759894 /* ActorsCellViewController.swift */,
 				8B8804351F28356200DE88CD /* MoviesCellViewController.swift */,
 			);
@@ -81,6 +80,7 @@
 		8B7FC15B1F2935230065F79D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8B7FC1561F28D31F0065F79D /* AboutAppViewController.swift */,
 				8BCE6AEE1F256F0C00759894 /* RequestTMDB.swift */,
 			);
 			name = Model;

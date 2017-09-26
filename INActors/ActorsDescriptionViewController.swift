@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActorsDescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ActorsDescriptionViewController: UIViewController {
     
     @IBOutlet weak var actorDescriptionImage: UIImageView!
     @IBOutlet weak var actorDescriptionName: UILabel!
@@ -53,11 +53,15 @@ class ActorsDescriptionViewController: UIViewController, UITableViewDelegate, UI
         
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+
+extension ActorsDescriptionViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesArraySorted.count
     }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = moviewTableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MoviesCellViewController
         cell.cellMoviesTitle?.text = moviesArraySorted[indexPath.row].movieTitle
         cell.cellMoviesRelease?.text = moviesArraySorted[indexPath.row].movieRelease
@@ -68,5 +72,10 @@ class ActorsDescriptionViewController: UIViewController, UITableViewDelegate, UI
         
         return cell
     }
-
 }
+
+
+
+
+
+
