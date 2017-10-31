@@ -19,19 +19,12 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
     var actor: NSDictionary?
     var name: NSString?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.actorsSearchBar.delegate = self
-        
     }
     
-    // hide keyboard when searh ends
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.actorsSearchBar.endEditing(true)
-//    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -50,9 +43,7 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         else {
             return 0
         }
-        
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -73,16 +64,13 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         }
 
         return cell
-
     }
-    
     
     // make a conexion wiht the api and shows the results in the table
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
             let requestActors: RequestTMDB = RequestTMDB()
             requestActors.people(inTableViewActors: tableView, search: searchText)
-        
     }
     
     // handle the behabior of the selected row
@@ -139,11 +127,8 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         
         // send data to ActorsDescriptionViewController
         self.navigationController?.pushViewController(description, animated: true)
-
     }
-
 }
-
 
 extension ActorsTableViewController: UISearchBarDelegate {
     func textFieldShouldReturn(_ textField: UISearchBar) -> Bool {
