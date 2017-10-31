@@ -55,7 +55,6 @@ class ActorsDescriptionViewController: UIViewController {
     
 }
 
-
 extension ActorsDescriptionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesArraySorted.count
@@ -73,9 +72,3 @@ extension ActorsDescriptionViewController: UITableViewDataSource {
         return cell
     }
 }
-
-
-
-
-
-

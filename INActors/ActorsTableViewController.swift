@@ -14,20 +14,16 @@ var actorsInfo: [NSDictionary]?  // Array of dictionaries that save all data tha
 
 // class defined in order to show the search results
 class ActorsTableViewController: UIViewController {
-
     @IBOutlet weak var actorsSearchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
-    
-    
+
     var actor: NSDictionary?
-    var name: NSString?
+    var name: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 }
-
 
 extension ActorsTableViewController: UISearchBarDelegate {
     // hide keyboard when searh ends
@@ -47,7 +43,6 @@ extension ActorsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "segueToDescription", sender: actorsInfo?[indexPath.row])
     }
-
 }
 
 extension ActorsTableViewController: UITableViewDataSource {
@@ -68,7 +63,7 @@ extension ActorsTableViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "actorsCell", for: indexPath) as! ActorsCellViewController
         actor = actorsInfo?[indexPath.row]
-        name = actor?["name"] as? NSString
+        name = actor?["name"] as? String
         cell.actorsName?.text = name! as String
         
         let actorImageFile = actor?["profile_path"] as? String
@@ -93,7 +88,7 @@ extension ActorsTableViewController: UITableViewDataSource {
         let description = storyBoard.instantiateViewController(withIdentifier: "ActorsDescriptionViewController") as! ActorsDescriptionViewController
         
         actor = actorsInfo?[indexPath.row]
-        name = actor?["name"] as? NSString
+        name = actor?["name"] as? String
         description.getName = name! as String
         
         let actorImageFile = actor?["profile_path"] as? String
@@ -134,8 +129,5 @@ extension ActorsTableViewController: UITableViewDataSource {
         
         // send data to ActorsDescriptionViewController
         self.navigationController?.pushViewController(description, animated: true)
-        
     }
-
 }
-
