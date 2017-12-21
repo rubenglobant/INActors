@@ -13,22 +13,24 @@ import Kingfisher    // library used to handle api images
 var actorsInfo: [NSDictionary]?  // Array of dictionaries that save all data that come from the api
 
 // class defined in order to show the search results
-class ActorsTableViewController: UITableViewController, UISearchControllerDelegate {
+class ActorsTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var actorsSearchBar: UISearchBar!
     var actor: NSDictionary?
     var name: NSString?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.actorsSearchBar.delegate = self
+        
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    // hide keyboard when searh ends
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.actorsSearchBar.endEditing(true)
     }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -43,7 +45,9 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         else {
             return 0
         }
+        
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -64,13 +68,16 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         }
 
         return cell
+
     }
+    
     
     // make a conexion wiht the api and shows the results in the table
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
             let requestActors: RequestTMDB = RequestTMDB()
             requestActors.people(inTableViewActors: tableView, search: searchText)
+        
     }
     
     // handle the behabior of the selected row
@@ -110,31 +117,20 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
                     movieRelease.append(value as? String)
                 }
                 if (key as! String == "poster_path") {
-                    if (value as? String == nil) {
-                        moviePoster.append("withoutImage")
-                    } else {
-                        moviePoster.append(value as? String)
-                    }
+                    moviePoster.append(value as? String)
                 }
                 
             }
         }
         
         // save data in descripton variable to be send
-        description.getMovieTitle = movieTitle
-        description.getMovieRelease = movieRelease
-        description.getMoviePoster = moviePoster
+        description.getMovieTitle = movieTitle as! [String]
+        description.getMovieRelease = movieRelease as! [String]
+        description.getMoviePoster = moviePoster as! [String]
         
         // send data to ActorsDescriptionViewController
         self.navigationController?.pushViewController(description, animated: true)
-    }
-}
 
-extension ActorsTableViewController: UISearchBarDelegate {
-    func textFieldShouldReturn(_ textField: UISearchBar) -> Bool {
-        if (textField == self.actorsSearchBar) {
-            textField.resignFirstResponder()
-        }
-        return true
     }
+
 }
