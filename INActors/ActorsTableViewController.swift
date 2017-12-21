@@ -8,57 +8,67 @@
 
 
 import UIKit
-import Kingfisher    // library used to handle api images
+import Kingfisher
 
 var actorsInfo: [NSDictionary]?  // Array of dictionaries that save all data that come from the api
 
 // class defined in order to show the search results
-class ActorsTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
-
+class ActorsTableViewController: UIViewController {
     @IBOutlet weak var actorsSearchBar: UISearchBar!
+    @IBOutlet var tableView: UITableView!
+
     var actor: NSDictionary?
-    var name: NSString?
-    
+    var name: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.actorsSearchBar.delegate = self
-        
     }
-    
+}
+
+extension ActorsTableViewController: UISearchBarDelegate {
     // hide keyboard when searh ends
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.actorsSearchBar.endEditing(true)
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    // make a conexion with the api and shows the results in the table
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let requestActors: RequestTMDB = RequestTMDB()
+        requestActors.people(inTableViewActors: tableView, search: searchText)
+    }
+}
+
+
+extension ActorsTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "segueToDescription", sender: actorsInfo?[indexPath.row])
+    }
+}
+
+extension ActorsTableViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if actorsInfo != nil{
             return (actorsInfo?.count)!
-        }
-        else {
+        } else {
             return 0
         }
-        
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "actorsCell", for: indexPath) as! ActorsCellViewController
         actor = actorsInfo?[indexPath.row]
-        name = actor?["name"] as? NSString
+        name = actor?["name"] as? String
         cell.actorsName?.text = name! as String
         
         let actorImageFile = actor?["profile_path"] as? String
         var urlActorImageFile: String
-
+        
         if (actorImageFile == nil) {
             cell.actorsImage.image = UIImage(named: "No-image-available.jpg")
         } else {
@@ -66,22 +76,11 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
             let urlImage = URL(string: urlActorImageFile)
             cell.actorsImage.kf.setImage(with: urlImage)
         }
-
-        return cell
-
-    }
-    
-    
-    // make a conexion wiht the api and shows the results in the table
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-            let requestActors: RequestTMDB = RequestTMDB()
-            requestActors.people(inTableViewActors: tableView, search: searchText)
         
+        return cell
     }
     
-    // handle the behabior of the selected row
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -89,7 +88,7 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         let description = storyBoard.instantiateViewController(withIdentifier: "ActorsDescriptionViewController") as! ActorsDescriptionViewController
         
         actor = actorsInfo?[indexPath.row]
-        name = actor?["name"] as? NSString
+        name = actor?["name"] as? String
         description.getName = name! as String
         
         let actorImageFile = actor?["profile_path"] as? String
@@ -98,7 +97,7 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
             description.getImage = "withoutImage"
         } else {
             description.getImage = "http://image.tmdb.org/t/p/w185/"+actorImageFile!
-
+            
         }
         
         let known_for = actor?["known_for"] as? NSArray
@@ -109,7 +108,7 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         for item in known_for! {
             let obj = item as! NSDictionary
             for (key, value) in obj {
-
+                
                 if (key as! String == "title") {
                     movieTitle.append(value as? String)
                 }
@@ -130,7 +129,5 @@ class ActorsTableViewController: UITableViewController, UISearchControllerDelega
         
         // send data to ActorsDescriptionViewController
         self.navigationController?.pushViewController(description, animated: true)
-
     }
-
 }

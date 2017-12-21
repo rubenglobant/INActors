@@ -22,6 +22,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="LLJ-MG-Pbd" id="gkW-aa-N4C"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actorsCell" rowHeight="90" id="m0N-lP-iUk" customClass="ActorsCellViewController" customModule="INActors" customModuleProvider="target">
@@ -32,7 +35,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj8-TI-nsj">
-                                            <rect key="frame" x="126" y="8" width="42" height="21"/>
+                                            <rect key="frame" x="126" y="8" width="227" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -46,7 +49,7 @@
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="yj8-TI-nsj" secondAttribute="trailing" constant="199" id="0tn-2c-DkV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yj8-TI-nsj" secondAttribute="trailing" constant="14" id="0tn-2c-DkV"/>
                                         <constraint firstItem="8Da-ei-ijM" firstAttribute="top" secondItem="ebu-Fb-nzz" secondAttribute="top" constant="-3" id="3dE-hH-oW1"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="yj8-TI-nsj" secondAttribute="bottom" constant="52.5" id="5Xk-LQ-cJi"/>
                                         <constraint firstItem="yj8-TI-nsj" firstAttribute="leading" secondItem="8Da-ei-ijM" secondAttribute="trailing" constant="18" id="gfH-d5-q8a"/>
@@ -69,12 +72,13 @@
                     <navigationItem key="navigationItem" id="RpS-fE-QLS"/>
                     <connections>
                         <outlet property="actorsSearchBar" destination="Ozq-bL-x0h" id="qbK-bn-Riz"/>
+                        <outlet property="tableView" destination="1Si-I3-qpk" id="iZp-kW-lTn"/>
                         <segue destination="bE1-Tr-Tul" kind="show" identifier="segueToDescription" id="WD8-2f-pG3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhd-9j-L57" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="929"/>
+            <point key="canvasLocation" x="1884" y="928.78560719640188"/>
         </scene>
         <!--About app-->
         <scene sceneID="e6J-Um-D4c">
