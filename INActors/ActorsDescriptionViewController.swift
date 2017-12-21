@@ -38,7 +38,7 @@ class ActorsDescriptionViewController: UIViewController, UITableViewDelegate, UI
         super.viewDidLoad()
         
         self.actorDescriptionName.text! = getName
-        //actorDescriptionName.adjustsFontSizeToFitWidth = true
+        
         if (getImage == "withoutImage") {
             self.actorDescriptionImage.image = UIImage(named: "No-image-available.jpg")
         } else {
@@ -63,14 +63,10 @@ class ActorsDescriptionViewController: UIViewController, UITableViewDelegate, UI
         cell.cellMoviesTitle?.text = moviesArraySorted[indexPath.row].movieTitle
         cell.cellMoviesRelease?.text = moviesArraySorted[indexPath.row].movieRelease
         
-        if (moviesArray[indexPath.row].moviePoster == "withoutImage") {
-            cell.cellMoviesImage.image = UIImage(named: "No-image-available.jpg")
-        } else {
         let urlMovieImageFile = "http://image.tmdb.org/t/p/w185/"+moviesArraySorted[indexPath.row].moviePoster
         let url = URL(string: urlMovieImageFile)
         cell.cellMoviesImage.kf.setImage(with: url)
-        }
-            
+        
         return cell
     }
 
